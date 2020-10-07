@@ -34,9 +34,7 @@ Things you may want to cover:
 | lastname        | string  | null: false |
 | kana_firstname  | string  | null: false |
 | kana_lastname   | string  | null: false |
-| birthyear_id    | integer | null: false |
-| birthmonth_id   | integer | null: false |
-| birthday_id     | integer | null: false |
+| birthday        | date    | null: false |
 
 ### Association
 
@@ -47,7 +45,7 @@ Things you may want to cover:
 
 | Column      | Type       | Options                        |
 | ------      | ------     | -----------                    |
-| item_name   | string     | null: false                    |
+| name   | string     | null: false                    |
 | explain     | text       | null: false                    |
 | category_id | integer    | null: false                    |
 | status_id   | integer    | null: false                    |
