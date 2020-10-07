@@ -45,7 +45,7 @@ Things you may want to cover:
 
 | Column      | Type       | Options                        |
 | ------      | ------     | -----------                    |
-| name   | string     | null: false                    |
+| name        | string     | null: false                    |
 | explain     | text       | null: false                    |
 | category_id | integer    | null: false                    |
 | status_id   | integer    | null: false                    |
@@ -76,7 +76,7 @@ Things you may want to cover:
 | Column        | Type       | Options                       |
 | ------        | ------     | -----------                   |
 | post_number   | string     | null: false                   |
-| live_area_id  | integer    | null: false                   |
+| area_id       | integer    | null: false                   |
 | live_city     | string     | null: false                   |
 | city_number   | string     | null: false                   |
 | building_name | string     |                               |
