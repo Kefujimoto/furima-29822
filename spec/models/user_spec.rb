@@ -10,8 +10,8 @@ RSpec.describe User, type: :model do
         expect(@user).to be_valid
       end
       it "passwordが6文字以上であれば登録できる" do
-        @user.password = "123456"
-        @user.password_confirmation = "123456"
+        @user.password = "123abc"
+        @user.password_confirmation = "123abc"
         expect(@user).to be_valid
       end
     end
@@ -45,8 +45,8 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Password can't be blank")
       end
       it "passwordが5文字以下であれば登録できない" do
-        @user.password = "12345"
-        @user.password_confirmation = "12345"
+        @user.password = "123ab"
+        @user.password_confirmation = "123ab"
         @user.valid?
         expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
       end
@@ -55,8 +55,13 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
-      it "passwordが半角英数字混合でなければ登録できない" do
-        @user.password = "試験"
+      it "passwordが半角数字のみの場合、登録ができない" do
+        @user.password = "123456"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password Include both letters and number")
+      end
+      it "passwordが半角英字のみの場合、登録できない" do
+        @user.password = "abcdef"
         @user.valid?
         expect(@user.errors.full_messages).to include("Password Include both letters and number")
       end
@@ -66,7 +71,7 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Firstname can't be blank")
       end
       it "firstnameが全角でなければ登録できない" do
-      @user.firstname = "abc"
+      @user.firstname = "aaa"
         @user.valid?
         expect(@user.errors.full_messages).to include("Firstname Full-width characters")
       end
@@ -76,7 +81,7 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Lastname can't be blank")
       end
       it "lastnameが全角でなければ登録できない" do
-        @user.lastname = "abd"
+        @user.lastname = "bbb"
         @user.valid?
         expect(@user.errors.full_messages).to include("Lastname Full-width characters")
       end
