@@ -57,3 +57,16 @@ group :production do
   gem 'rails_12factor'
 end
 
+gem 'devise'
+
+gem 'rspec-rails'
+
+gem 'factory_bot_rails'
+  
+gem 'faker'
+
+gem 'pry-rails'
+
+group :development do
+  gem 'rubocop', require: false
+end
