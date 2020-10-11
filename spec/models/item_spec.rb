@@ -10,10 +10,6 @@ RSpec.describe Item, type: :model do
       it "nameとexplain、category_idとstaatus_id、chaarge_idとarea_id、days_idとpriceが存在すれば登録できる" do
         expect(@item).to be_valid
       end
-      it "priceが半角数字であれば登録できる" do
-        @item.price = "500"
-        expect(@item).to be_valid
-      end
     end
 
     context '商品新規登録がうまくいかないとき' do
@@ -33,30 +29,30 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Explain can't be blank")
       end
-      it "category_idが空では登録できない" do
-        @item.category_id = nil
+      it "category_idが1では登録できない" do
+        @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category_id can't be blank")
+        expect(@item.errors.full_messages).to include("Category must be other than 1")
       end
-      it "status_idが空では登録できない" do
-        @item.status_id = nil
+      it "status_idが1では登録できない" do
+        @item.status_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Status_id can't be blank")
+        expect(@item.errors.full_messages).to include("Status must be other than 1")
       end
-      it "charge_idが空では登録できない" do
-        @item.charge_id = nil
+      it "charge_idが1では登録できない" do
+        @item.charge_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Charge_id can't be blank")
+        expect(@item.errors.full_messages).to include("Charge must be other than 1")
       end
-      it "area_idが空では登録できない" do
-        @item.area_id = nil
+      it "area_idが1では登録できない" do
+        @item.area_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Area_id can't be blank")
+        expect(@item.errors.full_messages).to include("Area must be other than 1")
       end
-      it "days_idが空では登録できない" do
-        @item.days_id = nil
+      it "days_idが1では登録できない" do
+        @item.days_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Days_id can't be blank")
+        expect(@item.errors.full_messages).to include("Days must be other than 1")
       end
       it "priceが空では登録できない" do
         @item.price = nil
@@ -66,17 +62,17 @@ RSpec.describe Item, type: :model do
       it "priceが300以上でなければ登録できない" do
         @item.price = 100
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is few(minimum is 300)")
+        expect(@item.errors.full_messages).to include("Price must be greater than 30")
       end
       it "priceが9999999以下でなければ登録できない" do
         @item.price = 10000000
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is too many(maximum is 9999999)")
+        expect(@item.errors.full_messages).to include("Price must be less than 9999999")
       end
       it "priceが半角数字以外の場合、登録ができない" do
         @item.price = "12ab"
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Include only number")
+        expect(@item.errors.full_messages).to include("Price is not a number")
     end
   end
 end
