@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :item do
     image             {sample.jpg}
-    name              {sample}
+    name              {Faker::Name.name}
     explain           {sampleexplain}
     category_id       {1}
     status_id         {3}

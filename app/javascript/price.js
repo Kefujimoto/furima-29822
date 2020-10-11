@@ -1,18 +1,19 @@
 window.addEventListener('load', function(){
 
-  const itemprice = new FormData(document.getElementById("item-price"));
+  const itemprice =document.getElementById("item-price");
   const charge = document.getElementById("add-tax-price");
   const benefit = document.getElementById("profit");
 
-  itemprice.addEventListener('oninput', function(){
-    
-  const total = itemprice.item-price;
+  itemprice.addEventListener('input', function(){
 
-  charge = total * 0.1;
-
-  benefit = total * 0.9;
+  const total = itemprice.value;  
   
-  add-tax-price.insertAdjacentHTML("afterend", HTML);
-  profit.insertAdjacentHTML("afterend", HTML);
+  const charge2 = Math.floor(total * 0.1);
+
+  const benefit2 = Math.floor(total * 0.9);
+
+  charge.innerHTML = charge2
+  benefit.innerHTML = benefit2
+  
   })
 })
