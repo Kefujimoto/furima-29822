@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :item do
-    image             {File.open('public/images/item_image.png'), filename: 'item_image.png'}
+    image             {File.open("public/images/item_image.png")}
     name              {Faker::Name.name}
     explain           {sampleexplain}
     category_id       {2}
