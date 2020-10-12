@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :item do
-    image             {Faker::Lorem.sentence}
+    image             {File.open('public/images/item_image.png'), filename: 'item_image.png'}
     name              {Faker::Name.name}
     explain           {sampleexplain}
     category_id       {2}
@@ -9,6 +9,7 @@ FactoryBot.define do
     area_id           {2}
     days_id           {5}
     price             {500}
-    association :user 
+    association :user
+
   end
 end
