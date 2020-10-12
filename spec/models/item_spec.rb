@@ -4,14 +4,12 @@ RSpec.describe Item, type: :model do
   before do
     @item = FactoryBot.build(:item)
   end
-
   describe '商品新規登録' do
     context '商品新規登録がうまくいくとき' do
       it "nameとexplain、category_idとstaatus_id、chaarge_idとarea_id、days_idとpriceが存在すれば登録できる" do
         expect(@item).to be_valid
       end
     end
-
     context '商品新規登録がうまくいかないとき' do
       it "imageが空だと登録できない" do
         @item.image = nil
@@ -22,7 +20,6 @@ RSpec.describe Item, type: :model do
         @item.name = nil
         @item.valid?
         expect(@item.errors.full_messages).to include("Name can't be blank")
-      end
       end
       it "explainが空では登録できない" do
         @item.explain = nil
@@ -73,6 +70,7 @@ RSpec.describe Item, type: :model do
         @item.price = "12ab"
         @item.valid?
         expect(@item.errors.full_messages).to include("Price is not a number")
+      end
     end
   end
 end
