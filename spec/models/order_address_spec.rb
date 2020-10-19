@@ -11,6 +11,12 @@ RSpec.describe OrderAddress, type: :model do
     expect(@order.errors.full_messages).to include("Token can't be blank")
   end
 
+  it "area_idが1では登録できないこと" do
+    @order.area_id = 1
+    @order.valid?
+    expect(@order.errors.full_messages).to include("Area must be other than 1")
+  end
+
   it "post_numberが空では登録できないこと" do
     @order.post_number = nil
     @order.valid?
@@ -45,6 +51,11 @@ RSpec.describe OrderAddress, type: :model do
     @order.phone_number = '090-1234-5678'
     @order.valid?
     expect(@order.errors.full_messages).to include("Phone number is not a number")
+  end
+
+  it "phone_numberが１１桁以内なら登録できること" do
+    @order.phone_number = '09012345678'
+    expect(@order).to be_valid
   end
 
 end
