@@ -3,7 +3,6 @@
    const form = document.getElementById("charge-form");
    form.addEventListener("submit", (e) => {
      e.preventDefault();
-     console.log("ok")
      const formResult = document.getElementById("charge-form");
      const formData = new FormData(formResult);
 
@@ -15,8 +14,7 @@
      };
 
      Payjp.createToken(card, (status, response) => {
-       console.log(response)
-       if (status == 200) {
+        if (status == 200) {
          const token = response.id;
          const renderDom = document.getElementById("charge-form");
          const tokenObj = `<input value=${token} name='token' type="hidden">`;

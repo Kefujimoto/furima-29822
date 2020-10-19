@@ -9,7 +9,7 @@ class OrderAddress
     validates :post_number, format: { with: /\A\d{3}[-]\d{4}\z/ }
     validates :city_number
     validates :house_number
-    validates :building_name
+    
     validates :phone_number, numericality: true, length: { maximum: 11 }
     
   end
