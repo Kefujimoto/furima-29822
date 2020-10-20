@@ -5,6 +5,6 @@ FactoryBot.define do
     post_number {'123-4567'}
     city_number {'帯広市'}
     house_number {'稲田町'}
-    phone_number  {'090-1234-5678'}
+    phone_number  {'09012345678'}
   end
 end
