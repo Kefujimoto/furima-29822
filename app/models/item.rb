@@ -23,7 +23,7 @@ class Item < ApplicationRecord
     if search != ""
       Item.where('name LIKE(?)', "%#{search}%")
     else
-      item.all
+      Item.all
     end
   end
 
