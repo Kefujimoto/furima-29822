@@ -18,4 +18,13 @@ class Item < ApplicationRecord
   validates :area_id, numericality: { other_than: 1 }
   validates :days_id, numericality: { other_than: 1 }
   validates :price, presence: true, numericality: {greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}, format: { with: /\A[0-9]+\z/ } 
+
+  def self.search(search)
+    if search != ""
+      Item.where('name LIKE(?)', "%#{search}%")
+    else
+      Item.all
+    end
+  end
+
 end
