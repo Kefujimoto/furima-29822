@@ -14,62 +14,62 @@ RSpec.describe Item, type: :model do
       it "imageが空だと登録できない" do
         @item.image = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("image can't be blank")
+        expect(@item.errors.full_messages).to include("出品画像を入力してください")
       end
       it "nameが空だと登録できない" do
         @item.name = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Name can't be blank")
+        expect(@item.errors.full_messages).to include("商品名を入力してください")
       end
       it "explainが空では登録できない" do
         @item.explain = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Explain can't be blank")
+        expect(@item.errors.full_messages).to include("商品の説明を入力してください")
       end
       it "category_idが1では登録できない" do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category must be other than 1")
+        expect(@item.errors.full_messages).to include("カテゴリーは1以外の値にしてください")
       end
       it "status_idが1では登録できない" do
         @item.status_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Status must be other than 1")
+        expect(@item.errors.full_messages).to include("商品の状態は1以外の値にしてください")
       end
       it "charge_idが1では登録できない" do
         @item.charge_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Charge must be other than 1")
+        expect(@item.errors.full_messages).to include("配送料の負担は1以外の値にしてください")
       end
       it "area_idが1では登録できない" do
         @item.area_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Area must be other than 1")
+        expect(@item.errors.full_messages).to include("発送元の地域は1以外の値にしてください")
       end
       it "days_idが1では登録できない" do
         @item.days_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Days must be other than 1")
+        expect(@item.errors.full_messages).to include("発送までの日数は1以外の値にしてください")
       end
       it "priceが空では登録できない" do
         @item.price = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price can't be blank")
+        expect(@item.errors.full_messages).to include("価格を入力してください")
       end
       it "priceが300以上でなければ登録できない" do
         @item.price = 100
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be greater than 30")
+        expect(@item.errors.full_messages).to include("価格は300以上の値にしてください")
       end
       it "priceが9999999以下でなければ登録できない" do
         @item.price = 10000000
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be less than 9999999")
+        expect(@item.errors.full_messages).to include("価格は9999999以下の値にしてください")
       end
       it "priceが半角数字以外の場合、登録ができない" do
         @item.price = "12ab"
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not a number")
+        expect(@item.errors.full_messages).to include("価格は数値で入力してください")
       end
     end
   end
